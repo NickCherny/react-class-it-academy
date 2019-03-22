@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import mocData from './moc';
 
 class App extends Component {
   render() {
     return (
       <main>
-        <h1>Lats study React.js</h1>
+        {JSON.stringify(mocData)}
       </main>
     );
   }
