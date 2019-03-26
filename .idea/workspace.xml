@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70d41734-12af-42fe-93d5-54199b7b47ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/LifecycleExample/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tab/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tab/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="70d41734-12af-42fe-93d5-54199b7b47ab" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
