@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import mocData from './moc';
+
+import Tab from './components/Tab';
 
 class App extends Component {
   render() {
     return (
       <main>
-        {JSON.stringify(mocData)}
+        <Tab />
       </main>
     );
   }
