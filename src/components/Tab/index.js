@@ -1,33 +1,57 @@
 import React from 'react';
+import axios from 'axios';
+
 import './styles.css';
 
 class Tab extends React.Component {
-    state = { activeTabId: this.props.startActiveTab };
+
+    state = {
+        activeTabId: 0,
+        items: [],
+        error: null
+    };
 
     handleChangeTab = (activeTabId) => {
         this.setState({ activeTabId });
     }
 
+    renderItem = (item, i) => {
+        const { source: { id } } = item;
+        return <div
+            key={`${id}_${i}`}
+            className={`tab-nav-item ${this.state.activeTabId === i ? 'active' : ''}`}
+            onClick={() => this.handleChangeTab(i)}
+        >
+            Новость - ${i}
+        </div>
+    }
+
+    componentDidMount() {
+        axios.get('https://newsapi.org/v2/top-headlines?country=ru&apiKey=4453b18292f3440e8603987307051b38')
+            .then(({ data: { articles } }) => {
+                this.setState({
+                    items: articles
+                });
+            })
+            .catch(({ message }) => {
+                this.setState({ error: message });
+            });
+    }
+
     render() {
-        const items = this.props.items;
-        const selectContent = items.find(item => {
-            return (item.source.id === this.state.activeTabId) ? item : null;
-        });
+        const { error } = this.state;
+
+        if (error) {
+            return <h1>{error}</h1>
+        }
+
+        const items = this.state.items;
+        const selectContent = items[this.state.activeTabId];
 
         return (
             <div className="tab-container">
                 <div className="tab-nav">
-                    {items.map(item => {
-                        const { source: { id, name } } = item;
-
-                        return <div
-                            key={id}
-                            className={`tab-nav-item ${this.state.activeTabId === id ? 'active' : ''}`}
-                            onClick={() => this.handleChangeTab(id)}
-                        >
-                            {name}
-                        </div>
-                    })}
+                    {items.map(this.renderItem)}
                 </div>
                 {Boolean(selectContent) && <div className="tab-content-container">
                     <h3 className="tab-content-title">{selectContent.title}</h3>
@@ -38,6 +62,8 @@ class Tab extends React.Component {
         )
     }
 }
+
+Tab.displayName = 'Tab2';
 
 Tab.defaultProps = {
     startActiveTab: 'props',
