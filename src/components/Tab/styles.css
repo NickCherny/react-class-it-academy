@@ -1,0 +1,51 @@
+.tab-container {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ccc;
+    width: 100%;
+    margin: 0 2px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.tab-nav-item:last-child {
+    margin-right: 0;
+}
+
+.tab-nav-item:first-child {
+    margin-left: 0;
+}
+
+.tab-nav-item.active {
+    background: #333;
+    color: #fff;
+}
+
+.tab-content-container {
+    padding: 16px;
+}
+
+.tab-content-title {
+    font-size: 21px;
+    font-weight: 400;
+    margin: 0 0 32px 0;
+    color: #333;
+}
+
+.tab-content-text {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #000;
+}
