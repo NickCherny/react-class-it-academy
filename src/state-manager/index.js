@@ -1,6 +1,7 @@
 function createStore(reducer, initialState = {}) {
   let currentReducer = reducer;
   let currentState = initialState;
+  let listeners = [];
 
   return {
     getState() {
@@ -8,7 +9,14 @@ function createStore(reducer, initialState = {}) {
     },
     dispatch(action) {
       currentState = currentReducer(currentState, action);
+      for (let listener of listeners) {
+        listener();
+      }
+
       return action;
+    },
+    subscribe(subscriber) {
+      listeners.push(subscriber);
     }
   };
 }
