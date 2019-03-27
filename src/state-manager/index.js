@@ -6,6 +6,10 @@ function createStore(reducer, initialState = {}) {
     getState() {
       return currentState;
     },
+    dispatch(action) {
+      currentState = currentReducer(currentState, action);
+      return action;
+    }
   };
 }
 
